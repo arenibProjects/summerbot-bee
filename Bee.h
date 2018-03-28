@@ -1,25 +1,30 @@
-#ifndef PINCE_H
-#define PINCE_H 1
+#ifndef BEE_H
+#define BEE_H 1
 
 //Standard headers
 #include <Arduino.h>
 #include <Servo.h>
 
-#define DEPLOYED 0
-#define RETRACTED 90
+#define OFFSET 18 //on the right servo
+#define DEPLOYED 90
+#define RETRACTED 0
 
 class Bee {
 
 public :
 	
-	Servo* servo_;
+	bool side_;
+	Servo *left_;
+	Servo *right_;
 	
-	Bee(Servo *servo);
+	Bee(Servo *left, Servo *right, bool side);
 	
 	void deploy();
 	void retract();
+	void init();
+	
 	bool isBusy();
 	
-}
+};
 
 #endif

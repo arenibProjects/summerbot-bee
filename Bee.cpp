@@ -3,28 +3,55 @@
 
 //---functions
 
-Bee::Bee(Servo *servo) {
+/**
+  *  left servo, right servo, side : true = left
+  */
+Bee::Bee(Servo *left, Servo *right, bool side) {
 
-	servo_ = servo;
-	servo_->read(RETRACTED);
+	left_ = left;
+	right_ = right;
+	left_->write(RETRACTED);
+	right_->write(RETRACTED);
+	side_ = side;
 
 }
 
-Bee::deploy() {
+void Bee::deploy() {
 
-	if(servo_->read() != DEPLOYED) {
-		servo_->write(DEPLOYED);
+	Serial.println("deploy");
+	if(side_) {
+		if(left_->read() != 180 - DEPLOYED){
+			left_->write(180 - DEPLOYED);
+		}
+	} else {
+		if(right_->read() != OFFSET + DEPLOYED) {
+			right_->write(OFFSET + DEPLOYED);
+		}
 	}
 }
 
-Bee::retract() {
+void Bee::retract() {
 	
-	if(servo_->read() != RETRACTED) {
-		servo_->write(RETRACTED);
+	Serial.println("retract");
+	if(side_) {
+		if(left_->read() != 180 - RETRACTED){
+			left_->write(180 - RETRACTED);
+		}
+	} else {
+		if(right_->read() != OFFSET + RETRACTED) {
+			right_->write(OFFSET + RETRACTED);
+		}
 	}
 }
 
-Bee::isBusy() {
+void Bee::init() {
+	
+	left_->write(180 - RETRACTED);
+	right_->write(OFFSET + RETRACTED);
+
+}
+
+bool Bee::isBusy() {
 
 	return false;
 }
