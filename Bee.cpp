@@ -20,34 +20,34 @@ void Bee::deploy() {
 
 	Serial.println("deploy");
 	if(side_) {
-		if(left_->read() != 180 - DEPLOYED){
-			left_->write(180 - DEPLOYED);
+		if(left_->read() != DEPLOYED){
+			left_->write(DEPLOYED);
 		}
 	} else {
-		if(right_->read() != OFFSET + DEPLOYED) {
-			right_->write(OFFSET + DEPLOYED);
+		if(right_->read() != 180 - OFFSET + DEPLOYED) {
+			right_->write(180 - OFFSET + DEPLOYED);
 		}
 	}
 }
 
 void Bee::retract() {
-	
+
 	Serial.println("retract");
 	if(side_) {
-		if(left_->read() != 180 - RETRACTED){
-			left_->write(180 - RETRACTED);
+		if(left_->read() != RETRACTED){
+			left_->write(RETRACTED);
 		}
 	} else {
-		if(right_->read() != OFFSET + RETRACTED) {
-			right_->write(OFFSET + RETRACTED);
+		if(right_->read() != 180 - OFFSET + RETRACTED) {
+			right_->write(180 - OFFSET + RETRACTED);
 		}
 	}
 }
 
 void Bee::init() {
-	
-	left_->write(180 - RETRACTED);
-	right_->write(OFFSET + RETRACTED);
+
+	left_->write(RETRACTED);
+	right_->write(180 - OFFSET + RETRACTED);
 
 }
 

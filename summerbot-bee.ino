@@ -1,4 +1,5 @@
 #include "Bee.h"
+#include "pinout.h"
 #include <Servo.h>
 
 Bee *bee;
@@ -12,10 +13,10 @@ void setup() {
 	delay(1000);
 	left = new Servo;
 	right = new Servo;
-	left->attach(2);
-	right->attach(3);
-	
-	bee = new Bee(left, right, true);
+	left->attach(SERVO8);
+	right->attach(SERVO5);
+
+	bee = new Bee(left, right, false);
 	bee->init();
 	Serial.println("init");
 	delay(1000);
@@ -23,10 +24,10 @@ void setup() {
 }
 
 void loop() {
-	
+
 	bee->deploy();
 	delay(1000);
 	bee->retract();
 	delay(1000);
-	
+
 }
