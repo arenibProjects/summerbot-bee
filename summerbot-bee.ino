@@ -8,17 +8,17 @@ Servo *right;
 
 void setup() {
 
-	pinMode(2,OUTPUT);
 	Serial.begin(9600);
-	delay(1000);
+	delay(1);
 	left = new Servo;
 	right = new Servo;
-	left->attach(SERVO8);
+	right->write(180 - (OFFSET + RETRACTED));
+	left->attach(SERVO6);
 	right->attach(SERVO5);
 
 	bee = new Bee(left, right, false);
-	bee->init();
 	Serial.println("init");
+
 	delay(1000);
 
 }
