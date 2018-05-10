@@ -5,8 +5,8 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define OFFSET 10 //on the right servo
-#define DEPLOYED 75
+#define OFFSET 11 //on the right servo
+#define DEPLOYED 77
 #define RETRACTED 155
 
 class Bee {

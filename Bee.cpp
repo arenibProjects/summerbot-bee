@@ -12,7 +12,7 @@ Bee::Bee(Servo *left, Servo *right, bool side) {
 	right_ = right;
 	left_->write(RETRACTED);
 	right_->write(180 - (OFFSET + RETRACTED));
-	side_ = side;
+	side_ = !side;
 
 }
 
