@@ -13,9 +13,6 @@ class Bee {
 
 public :
 
-	bool side_;
-	Servo *left_;
-	Servo *right_;
 
 	Bee(Servo *left, Servo *right, bool side);
 
@@ -24,6 +21,12 @@ public :
 
 	bool isBusy();
 
+private :
+	
+	bool side_;
+	Servo *left_;
+	Servo *right_;
+	
 };
 
 #endif
