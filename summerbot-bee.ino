@@ -12,7 +12,7 @@ void setup() {
 	delay(1);
 	left = new Servo;
 	right = new Servo;
-	right->write(180 - (OFFSET + RETRACTED));
+	right->write(180 - (BEE_OFFSET + RETRACTED));
 	left->attach(SERVO6);
 	right->attach(SERVO5);
 

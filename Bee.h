@@ -5,7 +5,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 
-#define OFFSET 11 //on the right servo
+#define BEE_OFFSET 11 //on the right servo
 #define DEPLOYED 77
 #define RETRACTED 155
 
@@ -21,7 +21,6 @@ public :
 
 	void deploy();
 	void retract();
-	void init();
 
 	bool isBusy();
 
